@@ -1,0 +1,21 @@
+{
+  "name": "jdwx/web-twig",
+  "description": "Integrate twig templates with jdwx/web and jdwx/panels.",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "JDWX\\Twig\\Web\\": "src/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": ">=8.3.0",
+    "jdwx/panels": "dev-main",
+    "jdwx/web": "dev-main"
+  },
+  "require-dev": {
+    "jetbrains/phpstorm-attributes": "^1.0",
+    "phpunit/phpunit": "^10"
+  }
+}
