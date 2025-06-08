@@ -4,10 +4,11 @@
 declare( strict_types = 1 );
 
 
-namespace JDWX\Twig;
+namespace JDWX\Twig\Web;
 
 
 use Ds\Map;
+use JDWX\Twig\MapTwigTrait;
 use Twig\Environment;
 
 

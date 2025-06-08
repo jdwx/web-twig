@@ -4,9 +4,10 @@
 declare( strict_types = 1 );
 
 
-namespace JDWX\Twig;
+namespace JDWX\Twig\Web;
 
 
+use JDWX\Twig\StaticTwigTrait;
 use Twig\Environment;
 
 

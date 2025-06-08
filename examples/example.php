@@ -9,10 +9,10 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use Ds\Map;
 use JDWX\Panels\PanelPage;
-use JDWX\Twig\MapTwigPage;
-use JDWX\Twig\StaticTwigPage;
-use JDWX\Twig\StaticTwigPanel;
 use JDWX\Twig\TwigHelper;
+use JDWX\Twig\Web\MapTwigPage;
+use JDWX\Twig\Web\StaticTwigPage;
+use JDWX\Twig\Web\StaticTwigPanel;
 
 
 class ErrorPage extends PanelPage {

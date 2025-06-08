@@ -4,17 +4,17 @@
 declare( strict_types = 1 );
 
 
-namespace JDWX\Twig\Tests;
+namespace JDWX\Twig\Web\Tests;
 
 
 use Ds\Map;
 use JDWX\Panels\PanelPage;
-use JDWX\Twig\MapTwigPanel;
 use JDWX\Twig\Tests\Shims\TwigTestCase;
+use JDWX\Twig\Web\MapTwigPanel;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 
-require_once __DIR__ . '/Shims/TwigTestCase.php';
+require_once __DIR__ . '/../vendor/jdwx/twig/tests/Shims/TwigTestCase.php';
 
 
 #[CoversClass( MapTwigPanel::class )]

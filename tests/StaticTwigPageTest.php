@@ -4,18 +4,18 @@
 declare( strict_types = 1 );
 
 
-namespace JDWX\Twig\Tests;
+namespace JDWX\Twig\Web\Tests;
 
 
-use JDWX\Twig\AbstractTwigPage;
-use JDWX\Twig\StaticTwigPage;
 use JDWX\Twig\Tests\Shims\TwigTestCase;
 use JDWX\Twig\TwigHelper;
+use JDWX\Twig\Web\AbstractTwigPage;
+use JDWX\Twig\Web\StaticTwigPage;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Twig\Environment;
 
 
-require_once __DIR__ . '/Shims/TwigTestCase.php';
+require_once __DIR__ . '/../vendor/jdwx/twig/tests/Shims/TwigTestCase.php';
 
 
 #[CoversClass( AbstractTwigPage::class )]

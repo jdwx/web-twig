@@ -4,10 +4,11 @@
 declare( strict_types = 1 );
 
 
-namespace JDWX\Twig;
+namespace JDWX\Twig\Web;
 
 
 use JDWX\Panels\AbstractBodyPanel;
+use JDWX\Twig\TwigTrait;
 use Twig\Environment;
 
 

@@ -4,25 +4,27 @@
 declare( strict_types = 1 );
 
 
-namespace JDWX\Twig\Tests;
+namespace JDWX\Twig\Web\Tests;
 
 
 use JDWX\Panels\PanelPage;
-use JDWX\Twig\AbstractTwigPanel;
-use JDWX\Twig\StaticTwigPanel;
-use JDWX\Twig\TwigHelper;
+use JDWX\Twig\Tests\Shims\TwigTestCase;
+use JDWX\Twig\Web\AbstractTwigPanel;
+use JDWX\Twig\Web\StaticTwigPanel;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\TestCase;
+
+
+require_once __DIR__ . '/../vendor/jdwx/twig/tests/Shims/TwigTestCase.php';
 
 
 #[CoversClass( AbstractTwigPanel::class )]
 #[CoversClass( StaticTwigPanel::class )]
-final class StaticTwigPanelTest extends TestCase {
+final class StaticTwigPanelTest extends TwigTestCase {
 
 
     public function testToString() : void {
         $sp = new StaticTwigPanel(
-            TwigHelper::forDirectory( __DIR__ . '/templates/' ),
+            self::newTestEnvironment(),
             'test',
             [ 'name' => 'world' ]
         );

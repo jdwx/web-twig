@@ -4,10 +4,11 @@
 declare( strict_types = 1 );
 
 
-namespace JDWX\Twig;
+namespace JDWX\Twig\Web;
 
 
 use JDWX\Panels\CssListTrait;
+use JDWX\Twig\TwigTrait;
 use JDWX\Web\Pages\AbstractHtmlPage;
 use JDWX\Web\Pages\HtmlHeadTrait;
 use JDWX\Web\Pages\HtmlPageTrait;

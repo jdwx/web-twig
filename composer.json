@@ -12,6 +12,7 @@
   "require": {
     "php": ">=8.3.0",
     "jdwx/panels": "dev-main",
+    "jdwx/twig": "^2.0",
     "jdwx/web": "dev-main"
   },
   "require-dev": {
