@@ -23,14 +23,12 @@ final class MapPageTest extends TwigTestCase {
     public function testRender() : void {
         $map = new Map();
         $page = new MapTwigPage( self::newTestEnvironment(), 'test', $map );
-        $page->setTitle( 'TEST_TITLE' );
-        $map->put( 'name', 'world' );
+        $map->put( 'name', 'map' );
         $stPage = strval( $page );
-        self::assertStringContainsString( '<title>TEST_TITLE</title>', $stPage );
-        self::assertStringContainsString( '<body>Hello, world!</body>', $stPage );
+        self::assertSame( 'Hello, map!', $stPage );
 
-        $map->put( 'name', 'galaxy' );
-        self::assertStringContainsString( '<body>Hello, galaxy!</body>', strval( $page ) );
+        $map->put( 'name', 'atlas' );
+        self::assertSame( 'Hello, atlas!', strval( $page ) );
     }
 
 
