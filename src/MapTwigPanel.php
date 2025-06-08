@@ -8,8 +8,8 @@ namespace JDWX\Twig\Web;
 
 
 use Ds\Map;
+use JDWX\Twig\Environments\EnvironmentInterface;
 use JDWX\Twig\MapTwigTrait;
-use Twig\Environment;
 
 
 class MapTwigPanel extends AbstractTwigPanel {
@@ -19,7 +19,7 @@ class MapTwigPanel extends AbstractTwigPanel {
 
 
     /** @param Map<string, mixed> $map */
-    public function __construct( Environment $env, string $stTemplate, Map $map ) {
+    public function __construct( EnvironmentInterface $env, string $stTemplate, Map $map ) {
         parent::__construct( $env, $stTemplate );
         $this->twigSetMap( $map );
     }

@@ -7,32 +7,27 @@ declare( strict_types = 1 );
 namespace JDWX\Twig\Web;
 
 
-use JDWX\Panels\CssListTrait;
+use JDWX\Twig\Environments\EnvironmentInterface;
 use JDWX\Twig\TwigTrait;
-use JDWX\Web\Pages\AbstractHtmlPage;
-use JDWX\Web\Pages\HtmlHeadTrait;
-use JDWX\Web\Pages\HtmlPageTrait;
+use JDWX\Web\Pages\AbstractPage;
 use Stringable;
-use Twig\Environment;
 
 
-abstract class AbstractTwigPage extends AbstractHtmlPage {
+abstract class AbstractTwigPage extends AbstractPage {
 
 
-    use CssListTrait;
-    use HtmlHeadTrait;
-    use HtmlPageTrait;
     use TwigTrait;
 
 
-    public function __construct( Environment $env, string $stTemplate, ?string $i_nstDefaultLanguage = null ) {
-        parent::__construct( $i_nstDefaultLanguage );
+    public function __construct( EnvironmentInterface $env, string $stTemplate, string $i_stContentType = 'text/html',
+                                 ?string              $i_nstCharset = null ) {
+        parent::__construct( $i_stContentType, $i_nstCharset );
         $this->twigSetTemplate( $env, $stTemplate );
     }
 
 
     /** @return iterable<string|Stringable> */
-    public function body() : iterable {
+    public function stream() : iterable {
         yield from $this->twigStream();
     }
 

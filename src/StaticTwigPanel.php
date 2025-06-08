@@ -7,8 +7,8 @@ declare( strict_types = 1 );
 namespace JDWX\Twig\Web;
 
 
+use JDWX\Twig\Environments\EnvironmentInterface;
 use JDWX\Twig\StaticTwigTrait;
-use Twig\Environment;
 
 
 /**
@@ -22,7 +22,7 @@ class StaticTwigPanel extends AbstractTwigPanel {
 
 
     /** @param array<string, mixed> $rValues */
-    public function __construct( Environment $env, string $stTemplate, array $rValues = [] ) {
+    public function __construct( EnvironmentInterface $env, string $stTemplate, array $rValues = [] ) {
         parent::__construct( $env, $stTemplate );
         $this->twigSetValues( $rValues );
     }
