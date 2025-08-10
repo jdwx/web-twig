@@ -7,7 +7,6 @@ declare( strict_types = 1 );
 namespace JDWX\Twig\Web;
 
 
-use JDWX\Panels\PanelInterface;
 use JDWX\Panels\PanelPage;
 use JDWX\Stream\StreamHelper;
 use JDWX\Twig\Environments\EnvironmentInterface;
@@ -16,7 +15,6 @@ use JDWX\Web\Framework\AbstractRoute;
 use JDWX\Web\Framework\Response;
 use JDWX\Web\Framework\ResponseInterface;
 use JDWX\Web\Framework\RouterInterface;
-use JDWX\Web\Pages\PageInterface;
 
 
 class AbstractTwigRoute extends AbstractRoute {
@@ -39,13 +37,13 @@ class AbstractTwigRoute extends AbstractRoute {
 
 
     /** @param array<string, mixed> $i_rContext */
-    protected function makeStaticPage( string $i_stTemplateName, array $i_rContext = [] ) : PageInterface {
+    protected function makeStaticPage( string $i_stTemplateName, array $i_rContext = [] ) : PanelPage {
         return new PanelPage( $this->makeStaticPanel( $i_stTemplateName, $i_rContext ) );
     }
 
 
     /** @param array<string, mixed> $i_rContext */
-    protected function makeStaticPanel( string $i_stTemplateName, array $i_rContext = [] ) : PanelInterface {
+    protected function makeStaticPanel( string $i_stTemplateName, array $i_rContext = [] ) : StaticTwigPanel {
         return new StaticTwigPanel( $this->twig, $i_stTemplateName, $i_rContext );
     }
 
