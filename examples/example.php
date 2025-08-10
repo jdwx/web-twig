@@ -37,7 +37,7 @@ class ErrorPage extends PanelPage {
 
 
 /** @suppress PhanTypeSuspiciousEcho */
-( function () : void {
+( static function () : void {
 
     echo "\n";
 
