@@ -18,7 +18,20 @@ use JDWX\Web\Framework\ResponseInterface;
 trait TwigRouteTrait {
 
 
-    protected EnvironmentInterface $twig;
+    abstract protected function getTemplateDirectory() : ?string;
+
+
+    protected function getTwig() : EnvironmentInterface {
+        static $twig = null;
+        if ( ! $twig instanceof EnvironmentInterface ) {
+            $nstDirectory = $this->getTemplateDirectory();
+            if ( ! is_string( $nstDirectory ) ) {
+                throw new \InvalidArgumentException( 'TEMPLATE_DIR has not been established for ' . static::class );
+            }
+            $twig = TwigHelper::forDirectory( $nstDirectory );
+        }
+        return $twig;
+    }
 
 
     /** @param array<string, mixed> $i_rContext */
@@ -29,7 +42,7 @@ trait TwigRouteTrait {
 
     /** @param array<string, mixed> $i_rContext */
     protected function makeStaticPanel( string $i_stTemplateName, array $i_rContext = [] ) : StaticTwigPanel {
-        return new StaticTwigPanel( $this->twig, $i_stTemplateName, $i_rContext );
+        return new StaticTwigPanel( $this->getTwig(), $i_stTemplateName, $i_rContext );
     }
 
 
@@ -47,14 +60,6 @@ trait TwigRouteTrait {
         $panel = $this->makeStaticPanel( $i_stTemplateName, $i_rContext );
         return Response::text( StreamHelper::toString( $panel->body() ), $i_uStatus,
             [ "Content-Type: {$i_stContentType}" ] );
-    }
-
-
-    protected function setTemplateDirectory( ?string $i_nstDirectory ) : void {
-        if ( ! is_string( $i_nstDirectory ) ) {
-            throw new \InvalidArgumentException( 'TEMPLATE_DIR has not been established for ' . static::class );
-        }
-        $this->twig = TwigHelper::forDirectory( $i_nstDirectory );
     }
 
 

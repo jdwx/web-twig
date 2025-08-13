@@ -8,7 +8,6 @@ namespace JDWX\Twig\Web;
 
 
 use JDWX\Web\Framework\AbstractRoute;
-use JDWX\Web\Framework\RouterInterface;
 
 
 class AbstractTwigRoute extends AbstractRoute {
@@ -17,12 +16,16 @@ class AbstractTwigRoute extends AbstractRoute {
     use TwigRouteTrait;
 
 
-    protected const ?string TEMPLATE_DIR = null;
+    private ?string $nstTemplateDir = null;
 
 
-    public function __construct( RouterInterface $router ) {
-        parent::__construct( $router );
-        $this->setTemplateDirectory( static::TEMPLATE_DIR );
+    protected function getTemplateDirectory() : ?string {
+        return $this->nstTemplateDir;
+    }
+
+
+    protected function setTemplateDirectory( string $i_nstTemplateDir ) : void {
+        $this->nstTemplateDir = $i_nstTemplateDir;
     }
 
 
