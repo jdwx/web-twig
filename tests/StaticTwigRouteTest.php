@@ -17,12 +17,16 @@ use PHPUnit\Framework\TestCase;
 final class StaticTwigRouteTest extends TestCase {
 
 
+    private const string TEMPLATE_DIR = __DIR__ . '/../examples/templates/';
+
+
     public function testHandleGETForNoTemplateDir() : void {
         $rtr = new RouteTestRouter();
+        $route = new StaticTwigRoute( $rtr );
+        $route->setTemplateName( 'static.html.twig' );
         $this->expectException( InvalidArgumentException::class );
         $this->expectExceptionMessage( 'TEMPLATE_DIR has not been established' );
-        $route = new StaticTwigRoute( $rtr );
-        unset( $route );
+        $rtr->test( $route );
     }
 
 
@@ -43,15 +47,7 @@ final class StaticTwigRouteTest extends TestCase {
 
     public function testRespondWithStaticTemplateHtml() : void {
         $rtr = new RouteTestRouter();
-        $route = new class( $rtr ) extends StaticTwigRoute {
-
-
-            protected const ?string TEMPLATE_DIR  = __DIR__ . '/../examples/templates/';
-
-            protected const ?string TEMPLATE_NAME = 'static.html.twig';
-
-
-        };
+        $route = StaticTwigRoute::make( $rtr, self::TEMPLATE_DIR, 'static.html.twig' );
 
         $route->set( 'name', 'Foo' );
         $response = $rtr->test( $route );
@@ -65,15 +61,7 @@ final class StaticTwigRouteTest extends TestCase {
 
     public function testRespondWithStaticTemplateText() : void {
         $rtr = new RouteTestRouter();
-        $route = new class( $rtr ) extends StaticTwigRoute {
-
-
-            protected const ?string TEMPLATE_DIR  = __DIR__ . '/../examples/templates/';
-
-            protected const ?string TEMPLATE_NAME = 'static.txt.twig';
-
-
-        };
+        $route = StaticTwigRoute::make( $rtr, self::TEMPLATE_DIR, 'static.txt.twig' );
         $route->setContext( [ 'name' => 'Bar' ] );
         $response = $rtr->test( $route );
         self::assertInstanceOf( ResponseInterface::class, $response );
