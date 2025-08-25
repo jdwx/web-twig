@@ -46,10 +46,15 @@ trait TwigRouteTrait {
     }
 
 
-    /** @param array<string, mixed> $i_rContext */
-    protected function respondWithStaticTemplateHtml( string $i_stTemplateName,
-                                                      array  $i_rContext = [] ) : ResponseInterface {
-        return Response::page( $this->makeStaticPage( $i_stTemplateName, $i_rContext ) );
+    /**
+     * @param array<string, mixed> $i_rContext
+     * @param ?iterable<string> $i_rHeaders
+     */
+    protected function respondWithStaticTemplateHtml( string    $i_stTemplateName,
+                                                      array     $i_rContext = [],
+                                                      int       $i_uStatusCode = 200,
+                                                      ?iterable $i_rHeaders = null ) : ResponseInterface {
+        return Response::page( $this->makeStaticPage( $i_stTemplateName, $i_rContext ), $i_uStatusCode, $i_rHeaders );
     }
 
 
