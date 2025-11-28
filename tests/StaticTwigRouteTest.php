@@ -64,7 +64,7 @@ final class StaticTwigRouteTest extends TestCase {
         $route = StaticTwigRoute::make( $rtr, self::TEMPLATE_DIR, 'static.txt.twig' );
         $route->setContext( [ 'name' => 'Bar' ] );
         $response = $rtr->test( $route );
-        self::assertInstanceOf( ResponseInterface::class, $response );
+        assert( $response instanceof ResponseInterface );
         $st = strval( $response );
         self::assertStringContainsString( 'text/plain', $response->getHeader( 'Content-Type' ) ?? '' );
         self::assertStringNotContainsString( '<!DOCTYPE html>', $st ); # Confirm that it did not respond with HTML.

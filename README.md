@@ -1,6 +1,6 @@
-# twig
+# jdwx/web-twig
 
-A very thin module for integrate Twig templates into other modules.
+A very thin module for integrating Twig templates into other web-related modules.
 
 ## Installation
 
